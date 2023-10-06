@@ -1,0 +1,45 @@
+<h3> Welcome  ......<img class="image" width="50px" height="50px" src="{{avatar}}" /> {{name}} </h3>
+<mat-card class="card">
+  <mat-card-header>
+    <h3>Enter your password: </h3>
+  </mat-card-header>
+
+<mat-card-content>
+  
+<form class="example-form" > 
+  <mat-form-field>
+  <input type="text" readonly formControlName="Username" placeholder="username"
+  value="{{currentUsername}}" aria-label="username" aria-describedby="username">
+</mat-form-field>
+
+  <mat-form-field>
+    
+    
+     
+  <input matInput id="userpass" [type]="hide ? 'password' : 'text'" aria-describedby="userpass" #user_password>
+  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+  </button>
+  </mat-form-field>
+
+  <span class="text-danger"
+  *ngIf="LoginForm.get('userpass')?.getError('required') && LoginForm.get('userpass')?.touched">Password
+  required</span>
+  <div class="d-flex justify-content-center">
+    <p class="p-container">
+    <button [disabled]="LoginForm.invalid || !currentUsername" type="button" mat-raised-button color="primary"
+      (click)="sendPasswordAndLogIn(user_password.value)"
+      (keydown.enter)="sendPasswordAndLogIn(user_password.value)">Submit
+    </button>
+  </p>
+
+  </div>
+
+</form>
+</mat-card-content>
+</mat-card>
+
+
+<mat-form-field>
+  
+</mat-form-field>
